@@ -1,0 +1,596 @@
+/* styles.css */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #007bff;
+    display: flex;
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    font-size: 32px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 20px;
+}
+
+#logo {
+    color: #fff;
+}
+
+
+#logo div {
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border-radius: 50px;
+    margin-bottom: -20px;
+    margin-left: 5px;
+}
+
+
+.menu ul {
+    display: flex;
+    align-items: center;
+}
+
+
+.menu ul li {
+    list-style: none;
+    color: #fff;
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    position: relative;
+}
+
+.menu ul li:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.menu ul li p {
+    position: absolute;
+    margin-top: 5px;
+    left: 40px;
+    width: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    color: #000;
+    font-size: 14px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 25px;
+    }
+
+    #logo div {
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        border-radius: 50px;
+        margin-bottom: -20px;
+        margin-left: 5px;
+    }
+
+    .menu {
+        display: none;
+    }
+    .hamburger {
+        width: 35px;
+        height: 35px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 7px;
+        border-radius: 50px;
+        display: flex;
+    }
+
+    .hamburger span {
+        padding: 2px;
+        background-color: #000;
+        border-radius: 10px;
+    }
+}
+
+.main-content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.main-content h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        width: 100%;
+    }
+}
+
+
+.sidebar {
+    width: 20%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: scroll;
+    border-left: 1px solid #eee;
+    position: relative;
+}
+.sidebar h3 {
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    margin: 0;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+
+.news-error-message {
+  text-align: center; /* Center the text horizontally */
+  margin-top: 50%; /* Center the text vertically (adjust as needed) */
+  transform: translateY(-50%); /* Adjust vertical alignment */
+  font-size: 16px; /* Set font size as desired */
+  color: red; /* Set the error message text color */
+  /* Add any other styles you want for the error message */
+}
+
+/* Style for the loader */
+.sidebar .loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+/* Keyframes for the spin animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+    display: flex; /* Use flexbox to place sections side by side */
+    justify-content: space-between; /* Add space between sections */
+    max-width: 800px; /* Adjust the container width */
+    margin: 0 auto;
+    padding: 20px; /* Increase padding for better spacing */
+    position: relative;
+}
+
+.converter,
+.historical-rates
+{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    width: 48%; /* Adjust width to make both sections a bit larger */
+    margin: 0 1%; /* Add spacing between the sections */
+}
+
+.calculator {
+    text-align: center;
+    position: absolute;
+    width: 40%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Style for the calculator when dragging */
+.calculator.dragging {
+    cursor: grab; /* Change the cursor style */
+    opacity: 0.7; /* Reduce opacity while dragging */
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+.calculator input[type="text"] {
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.calculator .button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    margin: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#close-calculator-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.openCalButton {
+    position: absolute;
+    top: 40%;
+    left: 0%;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    text-align: center;
+    line-height: 50px; /* Vertical alignment */
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .converter,
+    .historical-rates {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .calculator {
+        width: 70%;
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .historical-rates {
+        margin-top: 10px;
+    }
+
+    .openCalButton {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+}
+
+.historical-rates h3 {
+    text-decoration: underline;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+select,
+input[type="number"],
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the currency dropdowns */
+select {
+    background-color: #f9f9f9;
+}
+
+/* Style the converted amount field */
+#convertedAmount {
+    font-weight: bold;
+    font-size: 20px;
+    background-color: #f9f9f9;
+    border: none;
+    text-align: center;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+
+/*styles for the sidebar elements*/
+
+
+.news-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    cursor: pointer;
+}
+
+.news-item p {
+    margin-top: -15px;
+    font-size: 15px;
+}
+
+.news-item h4:hover {
+    text-decoration: underline;
+}
+
+.item-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-left img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+.item-right img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+#history-button {
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 10px;
+}
+
+#history-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Style the drawer container */
+.drawer {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Start from the left, adjust the width as needed */
+    width: 300px; /* Adjust the width as needed */
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2); /* Change the shadow direction */
+    transition: left 0.3s ease-in-out; /* Change the transition property */
+    display: none;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .drawer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Style the conversion history section */
+    .mobile-menu {
+        padding: 20px;
+    }
+
+    .mobile-menu ul li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .mobile-menu ul li a {
+        text-decoration: none;
+        color: #000;
+    }
+    .mobile-menu-footer {
+        padding: 10px;
+    }
+
+    .mobile-menu-footer .social-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    /* Open the drawer when active class is applied */
+    .active {
+        left: 0;
+    }
+
+    #closeDrawerButton {
+        position: absolute;
+        right: 10%;
+        font-size: 30px;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 5px;
+    }
+
+    #closeDrawerButton:hover {
+        border: 1px solid #eee;
+    }
+}
+
+/*styling for the footer*/
+
+.footer {
+    text-align: center;
+    background-color: #fff;
+    position: relative;
+    bottom: 0;
+}
+
+#footer-text {
+    font-size: 15px;
+}
+.marquee-section {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.marquee-section #live-indicator {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    border-top-right-radius: 10px;
+
+}
+
+marquee {
+    background-color: #fff;
+}
+
+@media (max-width: 768px) {
+    #footer-text {
+        font-size: 13px;
+    }
+
+    .marquee-section #live-indicator {
+        width: 90px;
+        font-size: 13px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}
+
+/* Add these styles to your existing CSS file or create a new one */
+
+/* Feedback Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 5px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ff0000;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

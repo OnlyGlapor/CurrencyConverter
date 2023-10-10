@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CurrencySnap</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   
+    <div class="main-content">
+        <div class="header">
+            <h1 id="logo">CurrencySnap<div></div></h1>
+            <div class="menu">
+                <ul>
+                    <li>Converter</li>
+                    <li>Rate Predictor
+                        <p>Coming Soon</p></li>
+                    <li>Counterfeit Detector<p>Coming Soon</p></li>
+                    <li id="openFeedbackModal">FeedBack</li>
+                </ul>
+            </div>
+            <div class="hamburger" id="openDrawerButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="drawer">
+            <p id="closeDrawerButton">
+                <i class="fa-solid fa-xmark fa-lg"></i>
+            </p>
+            <div class="mobile-menu">
+                <h3>CurrencySnap</h3>
+                <ul>
+                    <li><a href="#">Converter</a></li>
+                    <li><a href="#">Rate Predictor - Coming Soon</a></li>
+                    <li><a href="#">Counterfeit Detector - Coming Soon</a></li>
+                    <li id="openFeedbackModal"><a href="#">FeedBack</a></li>
+                </ul>
+            </div>
+
+            <div class="mobile-menu-footer">
+                <h5>Share the word!</h5>
+                <div class="social-wrapper">
+                    <span style="display: flex; align-items: center;">
+                        <i class="fa-brands fa-facebook fa-lg">
+                        </i>
+                        <p style="margin-left: 5px;">CurrencySnap</p>
+                    </span>
+                    <span style="display: flex; align-items: center;">
+                        <i class="fa-brands fa-threads fa-lg"></i>
+                        <p style="margin-left: 5px;">@csnap</p>
+                    </span>
+                    <span style="display: flex; align-items: center;">
+                        <i class="fa-brands fa-square-x-twitter fa-lg"></i>
+                        <p style="margin-left: 5px;">@csnap</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Main Converter Section -->
+            <div class="converter">
+                <div class="input-group">
+                    <label for="fromCurrency">From:</label>
+                    <select id="fromCurrency">
+                        <!-- Your currency options here -->
+                    </select>
+                    <input type="number" id="amount" placeholder="Amount">
+                </div>
+                <div class="input-group">
+                    <label for="toCurrency">To:</label>
+                    <select id="toCurrency">
+                        <!-- Your currency options here -->
+                    </select>
+                    <input type="text" id="convertedAmount" disabled>
+                </div>
+                <div 
+                style="
+                display: flex;align-items: center;
+                ">
+                    <button id="convertButton">Convert</button>
+                    <div id="history-button">Conversion History</div>
+                </div>
+            </div>
+            
+            <!-- Historical Exchange Rates Section -->
+            <div class="historical-rates">
+                <h3>Historical Exchange Rates</h3>
+                <div class="input-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" required>
+                </div>
+                <button id="getHistoricalRates">Get Historical Rates</button>
+                <div id="historicalRates"></div>
+            </div>
+
+             <!-- Calculator Section -->
+            <div class="calculator" id="Calculator">
+                <h3>Calculator</h3>
+                <div id="close-calculator-button">x</div>
+                <input type="text" id="display" disabled>
+                <br>
+                <div>
+                    <div class="button" onclick="addToDisplay('7')">7</div>
+                    <div class="button" onclick="addToDisplay('8')">8</div>
+                    <div class="button" onclick="addToDisplay('9')">9</div>
+                    <div class="button" onclick="addToDisplay('+')">+</div>
+                </div>
+                <div>
+                    <div class="button" onclick="addToDisplay('4')">4</div>
+                    <div class="button" onclick="addToDisplay('5')">5</div>
+                    <div class="button" onclick="addToDisplay('6')">6</div>
+                    <div class="button" onclick="addToDisplay('-')">-</div>
+                </div>
+                <div>
+                    <div class="button" onclick="addToDisplay('1')">1</div>
+                    <div class="button" onclick="addToDisplay('2')">2</div>
+                    <div class="button" onclick="addToDisplay('3')">3</div>
+                    <div class="button" onclick="addToDisplay('*')">*</div>
+                </div>
+                <div>
+                    <div class="button" onclick="clearDisplay('C')">C</div>
+                    <div class="button" onclick="addToDisplay('0')">0</div>
+                    <div class="button" onclick="addToDisplay('/')">/</div>
+                    <div class="button" onclick="calculateResult('=')">=</div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Feedback Modal -->
+        <div id="feedbackModal" class="modal">
+          <div class="modal-content">
+            <span class="close" id="closeFeedbackModal">&times;</span>
+            <h2>Feedback</h2>
+            <p>We value your feedback. Please share your thoughts with us:</p>
+            <textarea id="feedbackText" rows="4" placeholder="Enter your feedback here"></textarea>
+            <button id="submitFeedback">Submit</button>
+          </div>
+        </div>
+
+        <div id="openCalButton" class="openCalButton">
+            <i class="fa-solid fa-calculator fa-flip fa-xl"></i>
+        </div>
+        <div class="marquee-section">
+            <div id="live-indicator">
+                <p>Live Rates</p>
+            </div>
+            <marquee>
+                <p>
+                </p>
+            </marquee>
+        </div>
+        <div class="footer">
+            <p>&copy; 2023 - iConverter</p>
+            <p id="footer-text">Crafted with HTML, CSS, JavaScript, and Powered By OpenExchange API and NewsAPI for currency conversion and news.</p>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <!-- Sidebar content here -->
+        <h3>Currency News</h3>
+
+        <div class="loader" id="loader"></div>
+        <div class="news-item">
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/e91177e51b.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
