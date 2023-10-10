@@ -4,8 +4,8 @@ let exchangeRates = {};
 let currencySymbols = {};
 
 function updateExchangeRates() {
-    const exchangeRatesUrl = 'http://localhost:3000/getExchangeRates';
-    const currencySymbolsUrl = 'http://localhost:3000/getCurrencySymbols';
+    const exchangeRatesUrl = 'http://localhost:3000/getExchangeRateshttps://openexchangerates.org/api/latest.json?app_id=de6162a35a2d421796dbd4a58a02f2f0';
+    const currencySymbolsUrl = 'https://openexchangerates.org/api/currencies.json';
 
     fetch(exchangeRatesUrl)
         .then((response) => response.json())
