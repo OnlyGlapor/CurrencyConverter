@@ -35,10 +35,6 @@ To run this project locally, follow these steps:
 3. **Open `index.html`**:
    - Open `index.html` in your web browser.
 
-## Screenshots 🖼️
-
-(Optional: Include screenshots of your application to provide visual context.)
-
 ## License 📄
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
